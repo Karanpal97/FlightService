@@ -6,7 +6,7 @@ const  AppError = require("../utils/errors/app-error");
 
 
 
- const flightRepository=new  FlightsRepositery();
+ const flightRepository=new FlightsRepositery();
 
 async function createFlight(data){
   try{
@@ -15,7 +15,7 @@ async function createFlight(data){
      return flight;
   }
   catch(error){
- 
+    console.log(error)
    if(error.name=='SequelizeValidationError'){
       let explanation =[]
       error.errors.forEach((err)=>{
@@ -66,7 +66,7 @@ async function getAllFlights(query){
       return flights;
    }
    catch(error){
-      console.log(error)
+      
       throw new AppError('Cannot fetch s data of all the flights',StatusCodes.INTERNAL_SERVER_ERROR)
    }
 }

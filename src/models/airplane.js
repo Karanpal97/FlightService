@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
         this.hasMany(models.flights,{
           foreignKey:'airplaneId'
         })
+
+        this.hasMany(models.Seat,{
+          foreignKey:'airplaneId'
+        })
     }
   }
   Airplane.init({

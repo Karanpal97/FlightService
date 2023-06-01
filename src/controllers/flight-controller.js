@@ -10,7 +10,7 @@ const {FlightsService}=require("../services");
 
 async function createFlight(req,res){
    try{
-     const flights= await FlightsService.createFlights({
+     const flights= await FlightsService.createFlight({
       flightNumber:req.body.flightNumber,
       airplaneId:req.body.airplaneId,
       departureAirportId:req.body.departureAirportId,
