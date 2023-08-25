@@ -1,6 +1,8 @@
 const {Sequelize,Op}=require("sequelize")
 const CrudRepositery=require("./crud-repositries");
 const {flights,Airplane,Airports,City}=require("../models")
+const db=require("../models")
+const {addRowLockOnFlights}=require('./queries')
 class FlightRepository extends CrudRepositery{
    constructor(){
       super(flights);
@@ -50,7 +52,25 @@ async getAllFlights(filter,sort){
    })
    return response;
 }
+
+async updateRemainSeats(flightId,seats,dec=true){
+   const flight=await flights.findByPk(flightId)
+   const transaction= await db.sequelize.transaction();
+   await db.sequelize.query(addRowLockOnFlights(flightId))
+
+   if(+dec){
+           const response=await flight.decrement ('totalSeats',{by:seats},{transaction:transaction})
+           return response
+   }
+   else{
+    const response=await flight.increment('totalSeats',{by:seats},{transaction:transaction})
+    return response    
+   }
+ }
 }
+
+
+
 
 
 

@@ -60,8 +60,8 @@ async function destroyAirport(id){
    }
 }
 
-async function updateAirport(id){
-   try{const response=await airportRepositery.upDate(id);
+async function updateAirport(id,data){
+   try{const response=await airportRepositery.upDate(id,data);
    return response}
    catch(error){
       if(error.statusCode==StatusCodes.NOT_FOUND){

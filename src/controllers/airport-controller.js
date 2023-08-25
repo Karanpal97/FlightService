@@ -83,7 +83,7 @@ async function deleteAirport(req,res){
 
 async function updateAirport(req,res){
    try{
-      const airport=await AirplaneService.updateAirport();
+      const airport=await AirportService.updateAirport(req.params.id);
       SuccessResponse.data=airport;
       return res
           .status(StatusCodes.OK)
