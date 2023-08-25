@@ -13,7 +13,9 @@ router.get('/',
       
         FlightController.getAllFlights);
 
-        router.get('/:id',
+        router.get('/:id'
+        
+        ,
       
         FlightController.getFlight);
 
