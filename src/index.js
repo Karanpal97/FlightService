@@ -15,6 +15,6 @@ app.use('/api',apiRoutes)
 app.use('/flightService/api',apiRoutes)
 
 
-app.listen(ServerConfig.PORT,()=>{
+app.listen(3001,()=>{
    console.log(`successfully server is running ${ServerConfig.PORT}`)   
 })
